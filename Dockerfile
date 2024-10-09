@@ -1,4 +1,3 @@
-FROM busybox
-RUN yum update -y
-RUN yum install ansible -y
-RUN yum install git vim -y
+FROM maven
+RUN apt update -y
+RUN apt install git vim -y
