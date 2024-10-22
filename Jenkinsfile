@@ -10,12 +10,7 @@ pipeline {
     }
 
     stages {
-        stage('Checkout Code') {
-            steps {
-                sh git([url: 'https://github.com/petchimuthup/test.git', branch: 'master'])
-            }
-        }
-
+        
         stage('Run Ansible Playbook on Kubernetes Pods') {
             steps {
                 script {
