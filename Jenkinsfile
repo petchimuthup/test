@@ -1,5 +1,5 @@
 pipeline {
-    agent {label 'dockans'}
+    agent any
 
     environment {
         // Jenkins environment variables
