@@ -1,0 +1,12 @@
+---
+- hosts: kubernetes
+  become: yes
+  tasks:
+    - name: Install necessary packages
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - curl
+        - vim
+        - htop
