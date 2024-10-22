@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script {
                     // Ensure kubeconfig is available for Ansible to interact with Kubernetes
-                    writeFile file: 'kubeconfig', text: KUBE_CONFIG
+                    // writeFile file: 'kubeconfig', text: KUBE_CONFIG
                     
                     // Define the Ansible command to install packages inside Kubernetes pods
                     sh '''
