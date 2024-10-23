@@ -1,6 +1,5 @@
 pipeline {
     agent none
-
     environment {
         // Jenkins environment variables
         ANSIBLE_HOST_KEY_CHECKING = 'False'
@@ -9,12 +8,11 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials('dockhub_id')
         // WORKSPACE = '/home/jenkins/workspace/ansible-kube'
     }
-
     stages {
         stage('Github Connect') {
             agent {label 'jendock'}
             steps {
-                sh git ([url: 'https://github.com/petchimuthup/test.git', branch: 'master'])
+                sh git([url: 'https://github.com/petchimuthup/test.git', branch: 'master'])
             }
         }
         stage('Build Docker Image') {
@@ -62,7 +60,3 @@ pipeline {
             }
         }
     }
-
-    
-    }
-
