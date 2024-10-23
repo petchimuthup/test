@@ -43,7 +43,7 @@ pipeline {
         }
                                                       
         stage('Run Ansible Playbook on Kubernetes Pods') {
-            agent{
+            agent {
                 label 'kube'
             }
             steps {
