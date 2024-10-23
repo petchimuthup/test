@@ -13,7 +13,7 @@ pipeline {
         stage('Github Connect') {
             agent {label 'jendock'}
             steps {
-                sh git ([url: 'https://github.com/petchimuthup/test.git' branch: 'master'])
+                sh git ([url: 'https://github.com/petchimuthup/test.git', branch: 'master'])
             }
         }
         stage('Build Docker Image') {
