@@ -54,12 +54,6 @@ pipeline {
         }
     }
 
-    post {
-        success {
-            echo "Ansible playbook executed successfully!"
-        }
-        failure {
-            echo "Ansible playbook execution failed."
-        }
+    
     }
-}
+
