@@ -2,7 +2,7 @@
 FROM ubuntu:22.04
 
 # Install necessary packages
-RUN apt-get update && apt-get install -y openssh-server sudo
+RUN apt-get update y && apt-get install -y openssh-server sudo
 
 # Create a user for SSH access (avoid root login)
 RUN useradd -ms /bin/bash ansuser && echo "ansuser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
