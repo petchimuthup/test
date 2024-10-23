@@ -36,7 +36,7 @@ pipeline {
         stage('push image to dockerhub'){
             agent {
                 label 'jendock'
-                 }
+            }
             steps {
                 sh 'docker push 826316/ansubuntu'
             }
