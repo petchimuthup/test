@@ -38,6 +38,7 @@ pipeline {
         }
                                                       
         stage('Run Ansible Playbook on Kubernetes Pods') {
+            agent{label 'kube'}
             steps {
                 script {
                     // Ensure kubeconfig is available for Ansible to interact with Kubernetes
