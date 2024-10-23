@@ -1,5 +1,5 @@
 # Base image (can be any lightweight base like Alpine, Ubuntu, etc.)
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 # Install necessary packages
 RUN apt-get update && apt-get install -y openssh-server sudo
