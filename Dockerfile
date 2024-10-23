@@ -11,7 +11,7 @@ RUN useradd -ms /bin/bash ansuser && echo "ansuser ALL=(ALL) NOPASSWD: ALL" >> /
 RUN mkdir -p /home/ansuser/.ssh && chown ansuser:ansuser /home/ansuser/.ssh
 
 # Copy public key to the authorized_keys (you need to have the public key prepared)
-COPY your_public_key.pub /home/ansuser/.ssh/authorized_keys
+COPY id_rsa.pub /home/ansuser/.ssh/authorized_keys
 
 # Set correct permissions
 RUN chmod 700 /home/ansuser/.ssh && chmod 600 /home/ansuser/.ssh/authorized_keys
