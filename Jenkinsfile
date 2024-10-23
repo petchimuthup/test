@@ -6,6 +6,7 @@ pipeline {
         ANSIBLE_HOST_KEY_CHECKING = 'False'
         KUBE_CONFIG = credentials('aws-kubeconfig')  // kubeconfig file stored as a Jenkins credential
         ANSIBLE_INVENTORY = '/home/jenkins/workspace/ansible-kube/k8s_inventory.ini'  // Ansible inventory for targeting Kubernetes pods
+        DOCKERHUB_CREDENTIALS = credentials('dockhub_id')
         // WORKSPACE = '/home/jenkins/workspace/ansible-kube'
     }
 
@@ -29,8 +30,8 @@ pipeline {
                 label 'jendock'
             }
             steps {
-               withCredentials([string(credentialsId: 'dockhub_id', variable: 'DOCKERHUB_CREDENTIALS')]) {
-                sh 'docker login -u 826316 -p ${DOCKERHUB_CREDENTIALS}' 
+               sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                
                     }
             }
         }
