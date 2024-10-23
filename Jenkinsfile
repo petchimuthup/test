@@ -1,10 +1,10 @@
 pipeline {
-    agent any
+    agent {label 'ans'}
 
     environment {
         // Jenkins environment variables
         ANSIBLE_HOST_KEY_CHECKING = 'False'
-        KUBE_CONFIG = credentials('kubeconfig')  // kubeconfig file stored as a Jenkins credential
+        KUBE_CONFIG = credentials('aws-kubeconfig')  // kubeconfig file stored as a Jenkins credential
         ANSIBLE_INVENTORY = '/home/jenkins/workspace/ansible-kube/k8s_inventory.ini'  // Ansible inventory for targeting Kubernetes pods
         // WORKSPACE = '/home/jenkins/workspace/ansible-kube'
     }
