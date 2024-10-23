@@ -20,7 +20,7 @@ pipeline {
                     // Define the Ansible command to install packages inside Kubernetes pods
                     sh '''
                     ansible-playbook -i ${ANSIBLE_INVENTORY} install_packages.yml \
-                    --extra-vars "kubeconfig_path=${WORKSPACE}/kubeconfig"
+                    --extra-vars "kubeconfig_path=${WORKSPACE}/aws-kubeconfig"
                     '''
                 }
             }
