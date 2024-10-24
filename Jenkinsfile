@@ -8,32 +8,27 @@
   }
   stages {
     stage('connect git repo') {
-    
-      steps {
+        steps {
         git([url: 'https://github.com/petchimuthup/test.git', branch: 'master'])
              }
     }
     stage('build docker image') {
-     
-      steps {
+        steps {
         sh 'docker build -t 826316/ansubuntu .'
       }
     }
     stage('dockerhub login') {
-      
-      steps {
+        steps {
         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
       }
     }
     stage('push image to dockerhub') {
-      
-      steps {
+        steps {
         sh 'docker push -u 826316/ansubuntu .'
       }
     }
     stage('kubernets deploy') {
-      
-      steps {
+        steps {
         sh 'kubectl create -f deploy01.yml'
       }
     }
