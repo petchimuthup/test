@@ -6,7 +6,7 @@
     KUBE_CONFIG = credentials('aws-kubeconfig')
     ANSIBLE_INVENTORY = '/home/jenkins/workspace/anskubedock/k8inventory.ini'
   }
-  stages {
+  
     stage('connect git repo') {
         steps {
         git([url: 'https://github.com/petchimuthup/test.git', branch: 'master'])
@@ -32,5 +32,5 @@
         sh 'kubectl create -f deploy01.yml'
       }
     }
-  }
+  
   }
