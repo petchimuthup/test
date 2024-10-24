@@ -19,6 +19,9 @@ RUN chmod 700 /home/ansuser/.ssh && chmod 600 /home/ansuser/.ssh/authorized_keys
 # Configure SSH daemon
 RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config \
     && sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+RUN mkdir -p /var/run/sshd
+
+RUN chmod 0755 /var/run/sshd
 
 # Expose SSH port
 EXPOSE 22
