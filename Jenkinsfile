@@ -1,4 +1,4 @@
-pipeline {
+
   node {
   environment {
     DOCKERHUB_CREDENTIALS = credentials('dockerhublogin')
@@ -39,4 +39,3 @@ pipeline {
     }
   }
   }
-}
