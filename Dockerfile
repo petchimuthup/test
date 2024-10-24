@@ -14,12 +14,14 @@ RUN mkdir -p /home/ansuser/.ssh && chown ansuser:ansuser /home/ansuser/.ssh
 COPY id_rsa.pub /home/ansuser/.ssh/authorized_keys
 
 # Set correct permissions
-RUN chmod 700 /home/ansuser/.ssh && chmod 600 /home/ansuser/.ssh/authorized_keys
+RUN chmod 700 /home/ansuser/.ssh && chmod 600 /home/ansuser/.ssh/authorized_keys && chown ansuser:ansuser /home/ansuser/.ssh/authorized_keys
 
 # Configure SSH daemon
 RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config \
     && sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config \
-    && sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd_config
+    && sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd_config \
+    && sed -i 's/#Port 22/Port 22/' /etc/ssh/sshd_config
+    
     
 RUN mkdir -p /var/run/sshd
 
@@ -30,4 +32,3 @@ EXPOSE 22
 
 # Start SSH service
 CMD ["/usr/sbin/sshd", "-D"]
-
