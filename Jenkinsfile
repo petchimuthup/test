@@ -15,7 +15,7 @@
     stage('dockerhub login') {
         script {
         withDockerRegistry(credentialsId: 'dockerhublogin', toolName: 'docker') {
-         sh 'docker push 826316/ansubuntu .' 
+         sh 'docker push 826316/ansubuntu' 
         }
         }
     }
