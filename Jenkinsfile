@@ -13,14 +13,13 @@
         sh 'docker build -t 826316/ansubuntu .'
       }
     stage('dockerhub login') {
-        environment {
-          DOCKERHUB_CREDENTIALS = credentials('dockerhublogin') 
+        script {
+        withDockerRegistry(credentialsId: 'dockerhublogin', toolName: 'docker') {
+         sh 'docker push -u 826316/ansubuntu .' 
         }
-        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-      }
-    stage('push image to dockerhub') {
-        sh 'docker push -u 826316/ansubuntu .'
-      }
+        }
+    }
+    
     stage('kubernets deploy') {
         sh 'kubectl create -f deploy01.yml'
       }
