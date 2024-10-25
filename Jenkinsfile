@@ -20,7 +20,4 @@
         }
     }
     
-    stage('kubernets deploy') {
-        sh 'kubectl create -f deploy01.yml'
-      }
-    }
+  }
