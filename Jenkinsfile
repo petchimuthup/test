@@ -1,5 +1,5 @@
 
-  node {
+  node(label: 'jendock') {
   environment {
     // DOCKERHUB_CREDENTIALS = credentials('dockerhublogin')
     ANSIBLE_HOST_KEY_CHECKING = 'False'
