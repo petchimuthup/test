@@ -1,7 +1,7 @@
 
   node {
   environment {
-    DOCKERHUB_CREDENTIALS = credentials('dockerhublogin')
+    // DOCKERHUB_CREDENTIALS = credentials('dockerhublogin')
     ANSIBLE_HOST_KEY_CHECKING = 'False'
     KUBE_CONFIG = credentials('aws-kubeconfig')
     ANSIBLE_INVENTORY = '/home/jenkins/workspace/anskubedock/k8inventory.ini'
@@ -13,6 +13,9 @@
         sh 'docker build -t 826316/ansubuntu .'
       }
     stage('dockerhub login') {
+        environment {
+          DOCKERHUB_CREDENTIALS = credentials('dockerhublogin') 
+        }
         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
       }
     stage('push image to dockerhub') {
